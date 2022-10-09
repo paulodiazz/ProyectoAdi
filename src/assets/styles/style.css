@@ -1,0 +1,52 @@
+@font-face {
+    font-family: BreatheFire;
+    src: url("../fonts/Breathe\ Fire.otf") format("opentype");
+}
+
+h1, h2, h3, h4, h5, p, th, td {
+    font-family: 'BreatheFire';
+}
+
+.text-gold {
+    background: -webkit-linear-gradient(#BF863F, #F6EAAD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-white {
+    background: linear-gradient(to right, #dfdfdf,  #FEFEFE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+th, td {
+    background: linear-gradient(to right, #dfdfdf,  #FEFEFE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.map {
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.centered {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
