@@ -5,6 +5,7 @@ import styles from './styles/header.module.css';
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
 import Hunt from "./pages/Hunt";
+import Challenge from "./pages/Challenge";
 
 import {handleConnectWallet} from './wallet/walletUtils';
 import { useAccount, useSignMessage } from 'wagmi';
@@ -91,6 +92,9 @@ function App() {
             </Routes>
             <Routes>
               <Route path="/leaderboard" element={<Leaderboard />}/>
+            </Routes>
+            <Routes>
+              <Route path="/challenge/:challengeId" element={<Challenge />}/>
             </Routes>
           </HashRouter>
         </div>
