@@ -6,6 +6,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
 import Hunt from "./pages/Hunt";
+import Challenge from "./pages/Challenge";
 
 import {handleConnectWallet} from './wallet/walletUtils';
 import { useAccount, useSignMessage } from 'wagmi';
@@ -30,7 +31,7 @@ function App() {
       const signature = await signMessageAsync({ message: challenge });
       const accessToken = await authenticate(account, signature);
       console.log({ accessToken });
-      window.sessionStorage.setItem('accessToken', accessToken);
+      window.sessionStorage.setItem('lensAccessToken', accessToken);
       setSignedIn(true);
     } catch (error) {
       console.error(error);
@@ -77,6 +78,9 @@ function App() {
             </Routes>
             <Routes>
               <Route path="/leaderboard" element={<Leaderboard />}/>
+            </Routes>
+            <Routes>
+              <Route path="/challenge/:challengeId" element={<Challenge />}/>
             </Routes>
           </HashRouter>
         </div>

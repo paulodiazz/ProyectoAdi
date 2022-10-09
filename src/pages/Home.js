@@ -3,11 +3,6 @@ import styles from '../styles/home.module.css'
 // import { useNetwork } from 'wagmi'
 
 function Home() {
-  // const { chain } = useNetwork()
-  // var newPostBlock = ""
-  // if (chain && chain.id) {
-  //   newPostBlock = <div><NewPost /></div>
-  // }
   return (
     <div className={styles.container}>
       <p>Welcome to Dhorado!</p>
