@@ -69,7 +69,7 @@ function MapComponent() {
         initialViewState= {{
           longitude: lng,
           latitude: lat,
-          zoom: 10
+          zoom: 15
         }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         interactiveLayerIds={'click'}
