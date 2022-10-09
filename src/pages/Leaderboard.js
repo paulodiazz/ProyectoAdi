@@ -1,8 +1,35 @@
 import styles from '../styles/leaderboard.module.css';
 import React from 'react';
 import "../assets/styles/style.css"
+import leaderData from "../assets/data/leaderboard.json"
+
+// Dynamically generate table rows
+// Assumes rows are sorted already
+function generateRows(rows) {
+    console.log("length " + rows.length);
+
+    return rows.map((row, i) => {
+
+        return (
+            <>
+                <div className='col-2'>
+                    <p className='text-center'># {i + 1}</p>
+                </div>
+                <div className='col-4'>
+                    <p className='text-center'>{row.username}</p>
+                </div>
+                <div className='col-6'>
+                    <p className='text-center'>{row.treasuresFound}</p>
+                </div>
+            </>
+        );
+    });
+}
 
 function Leaderboard() {
+    var data = leaderData.profiles.sort((a, b) => {
+        return (a.treasuresFound > b.treasuresFound ? -1 : 1);
+    });
 
     return (
         <div class="container no-padding">
@@ -16,7 +43,7 @@ function Leaderboard() {
                 <div className='row w-50 mx-auto py-5'>
                     <img src={require("../assets/images/UI/GlobalLeaderBoard.png").default} />
                 </div>
-                <div className='row mx-auto' style={{width: "90%"}}>
+                <div className='row mx-auto' style={{ width: "90%" }}>
                     {/* Columns titles */}
                     <div className='col-2'>
                         <h5 className='text-center'>Rank</h5>
@@ -28,45 +55,7 @@ function Leaderboard() {
                         <h5 className='text-center'>Treasures Captured</h5>
                     </div>
                     {/* User rows need function to iterate over response */}
-                    <div className='col-2'>
-                        <p className='text-center'>#1</p>
-                    </div>
-                    <div className='col-4'>
-                        <p className='text-center'>Hamza.lens</p>
-                    </div>
-                    <div className='col-6'>
-                        <p className='text-center'>34</p>
-                    </div>
-                    {/* ------------------------------------- */}
-                    <div className='col-2'>
-                        <p className='text-center'>#2</p>
-                    </div>
-                    <div className='col-4'>
-                        <p className='text-center'>Anna.lens</p>
-                    </div>
-                    <div className='col-6'>
-                        <p className='text-center'>31</p>
-                    </div>
-                    {/* ------------------------------------- */}
-                    <div className='col-2'>
-                        <p className='text-center'>#3</p>
-                    </div>
-                    <div className='col-4'>
-                        <p className='text-center'>Paulo.lens</p>
-                    </div>
-                    <div className='col-6'>
-                        <p className='text-center'>23</p>
-                    </div>
-                    {/* ------------------------------------- */}
-                    <div className='col-2'>
-                        <p className='text-center'>#4</p>
-                    </div>
-                    <div className='col-4'>
-                        <p className='text-center'>Nick.lens</p>
-                    </div>
-                    <div className='col-6'>
-                        <p className='text-center'>22</p>
-                    </div>
+                    {generateRows(data)}
                 </div>
                 <div className="w-50 mx-auto">
                     <a href="/#/hunt"  >
