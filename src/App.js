@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, HashRouter } from 'react-router-dom';
 import styles from './styles/header.module.css';
-import { useState } from "react";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 import Home from "./pages/Home";
@@ -19,16 +18,14 @@ function App() {
   const [provider, setProvider] = useState();
   const [providerexp, setProviderexp] = useState();
   const [walletConnection, setWalletConnection] = useState(undefined);
-  const connected = !!data?.address;
   const { signMessageAsync } = useSignMessage();
   const [signedIn, setSignedIn] = useState(false);
 
   const signIn = async () => {
     try {
-      // if (!connected) {
-      //   return alert('Please connect your wallet first');
-      // }
-      // var address = "0x3E2dAba02b8b09879ed9b517bF4603a3DD9C410F"
+      if (account == null){
+        return alert('Please connect your wallet first');
+      }
       const challenge = await generateChallenge(account);
       const signature = await signMessageAsync({ message: challenge });
       const accessToken = await authenticate(account, signature);
