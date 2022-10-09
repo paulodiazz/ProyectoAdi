@@ -1,5 +1,5 @@
 import React from 'react';
-import "../assets/styles/style.css";
+import styles from '../styles/home.module.css'
 // import { useNetwork } from 'wagmi'
 
 function Home() {
@@ -22,6 +22,11 @@ function Home() {
           <img src={require("../assets/images/UI/StartHunting.png").default} alt="Start hunting" />
         </a>
       </div>
+    
+      <a href='/#/hunt'>
+        <button className={styles.button}>Start hunting!</button>
+      </a>
+    
     </div>
   );
 }
