@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, HashRouter } from 'react-router-dom';
-<<<<<<< HEAD
-
-=======
 import styles from './styles/header.module.css';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
->>>>>>> ed0f503b798eda837c340446b8059ec3f61d66bb
 
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
@@ -44,8 +39,6 @@ function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-=======
       <div className={styles.header}>
 
       {account ?
@@ -72,7 +65,6 @@ function App() {
         </button>
       )}
       </div>
->>>>>>> ed0f503b798eda837c340446b8059ec3f61d66bb
       <div>
         <div>
           <HashRouter basename="/">
