@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, HashRouter } from 'react-router-dom';
-<<<<<<< HEAD
+
 import styles from './styles/header.module.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-=======
-
->>>>>>> f22a5bd (Added Map component & styles)
 
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
