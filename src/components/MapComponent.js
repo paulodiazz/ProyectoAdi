@@ -3,35 +3,40 @@ import Map, {Popup, GeolocateControl, Marker ,NavigationControl, FullscreenContr
 import { React, useState, useContext } from 'react';
 import geoJson from "./chicago-parks.json";
 
-const renderMarkers = (_markers, setTitle, setDescription, setIsFound) => {
+
+const renderMarkers = (_markers, setTitle, setDescription, setIsFound, setHint) => {
+
   return(_markers.map(marker=>{
-    if(marker.properties.isFound=="True"){
+    if(marker.isFound=="True"){
       return(
         <Marker
-          longitude={marker.geometry.coordinates[0]}
-          latitude={marker.geometry.coordinates[1]}
+          longitude={marker.lon}
+          latitude={marker.lat}
           color={"#00FF00"}
           clickTolerance={true}
           onClick={() => {
-            setTitle(marker.properties.title);
-            setDescription(marker.properties.description);
-            setIsFound(marker.properties.isFound);
+            setTitle(marker.name);
+            setDescription(marker.description);
+            setHint(marker.hint);
+            //setIsFound(marker.properties.isFound);
             console.log("Click");
-          }}
+          }
+        }
         >
     
         </Marker>)
       }
       else{return(
         <Marker
-          longitude={marker.geometry.coordinates[0]}
-          latitude={marker.geometry.coordinates[1]}
+        longitude={marker.lon}
+        latitude={marker.lat}
           color={"#FF0000"}
           clickTolerance={true}
           onClick={() => {
-            setTitle(marker.properties.title);
-            setDescription(marker.properties.description);
-            setIsFound(marker.properties.isFound);
+            setTitle(marker.name);
+            setDescription(marker.description);
+            setHint(marker.hint);
+            //setIsFound(marker.properties.isFound);
             console.log("Click");
           }}
           >
@@ -41,13 +46,16 @@ const renderMarkers = (_markers, setTitle, setDescription, setIsFound) => {
   }))
 }
 
+
 function MapComponent() {
-  const [lng, setLng] = useState(-87.637596);
-  const [lat, setLat] =useState(41.940403);
+  const [lng, setLng] = useState(-74.093248);
+  const [lat, setLat] =useState(4.629650);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [hint, setHint] = useState("");
   const [isFound, setIsFound] = useState(false);
+  
 
   return (
     <>
@@ -66,19 +74,25 @@ function MapComponent() {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         interactiveLayerIds={'click'}
       >
-        {renderMarkers(geoJson.features, setTitle, setDescription, setIsFound)}
+        {renderMarkers(geoJson.features, setTitle, setDescription, setIsFound,setHint)}
 
         <NavigationControl position="bottom-right"/>
         <FullscreenControl/>
         <GeolocateControl/>
       </Map>
       <div>
-        <h1 className='text-center pt-3'>Select a treasure to see more</h1>
+      <div className='row w-30 mx-auto pt-2'>
+        
+      </div>
+      
         <h4 className='text-center'>
           {title}
         </h4>
         <h4 className='text-center'>
           {description}
+        </h4>
+        <h4 className='text-center'>
+        {hint}  
         </h4>
       </div>
     </>
