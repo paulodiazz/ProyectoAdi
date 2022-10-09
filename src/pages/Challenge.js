@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '../styles/challenge.module.css'
 import { useParams } from "react-router-dom";
 
 function Challenge() {
@@ -8,13 +7,8 @@ function Challenge() {
   var accessToken = window.sessionStorage.getItem("lensAccessToken")
 
   return (
-    <div className={styles.container}>
-      <button className={styles.button}>solve challenge #{challengeId}!</button>
-    
-      <a href='/#/'>
-        <button className={styles.button}>Go back home!</button>
-      </a>
-    
+    <div class="container no-padding">
+      <img src={require("../assets/images/UI/Confirmacion.png").default} alt="Background" />
     </div>
   );
 }
