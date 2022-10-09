@@ -38,32 +38,47 @@ function App() {
   };
 
   return (
-    <div>
-      <div className={styles.header}>
-
-      {account ?
-              <button class="grey" onClick={async ()=>{
+    <div className="o-hidden">
+      <div className="row pt-3" style={{backgroundColor: "#391C00"}}>
+        <div className="col-6 d-flex justify-content-center">
+          {account ?
+            <button className="btn-browngold"
+              onClick={async ()=>{
                 await web3modal.clearCachedProvider();
                 setAccount(undefined);
                 setProvider();
-              }}>{account}</button>
-              :
-                  <button class="grey" onClick={
-                () => {
+              }}>
+                <p className="px-2">
+                  {account.slice(0, 12).concat('...')}
+                </p>
+            </button>
+          :
+            <button className="btn-browngold"
+            style={{maxWidth: "160px"}}
+              onClick={ () => {
                 handleConnectWallet({
-                  setAccount,
-                  setWeb3modal,
-                  setProvider,
-                  setProviderexp,
-                  setWalletConnection
-                })
-                }}>CONNECT WALLET</button>
-              }
-      {!signedIn && (
-        <button onClick={signIn} margintop='2'>
-          Login with Lens
-        </button>
-      )}
+                setAccount,
+                setWeb3modal,
+                setProvider,
+                setProviderexp,
+                setWalletConnection
+            })}}>
+              <p className="px-2">
+                CONNECT WALLET
+              </p>
+            </button>
+          }
+        </div>
+        <div className="col-6 d-flex justify-content-center">
+          {!signedIn && (
+            <button className="btn-browngold"
+            style={{maxWidth: "160px"}} onClick={signIn}>
+              <p className="px-2 text-uppercase">
+                Login with Lens
+              </p>
+            </button>
+          )}
+        </div>
       </div>
       <div>
         <div>

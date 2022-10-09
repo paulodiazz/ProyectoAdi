@@ -3,7 +3,7 @@
     src: url("../fonts/Breathe\ Fire.otf") format("opentype");
 }
 
-h1, h2, h3, h4, h5, p, th, td {
+h1, h2, h3, h4, h5, p, th, td, button {
     font-family: 'BreatheFire';
 }
 
@@ -27,6 +27,11 @@ th, td {
 
 h1 {
     font-size: 2rem;
+    line-height: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 .map {
@@ -44,9 +49,32 @@ h1 {
     padding: 0 !important;
 }
 
+.btn-browngold {
+    font-size: 0.5rem;
+    background-color: transparent;
+    min-width: 152px;
+    border: none;
+    background-image: url("../images/UI/BotonTemplate.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center; /* center the content horizontally */
+    align-items: center;
+}
+
+.btn-browngold p {
+    padding-top: 0.75rem;
+    color: black;
+}
+
 .centered {
     position: absolute;
     top: 56%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
+
+.fondo {
+    background-image: url("../images/UI/FondoLeaderboard.png");
+    background-size: contain;
+    min-height: 100vh;
+}
