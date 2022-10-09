@@ -1,5 +1,5 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Map, {Popup, GeolocateControl, Marker ,NavigationControl, FullscreenControl } from "react-map-gl"; 
+import Map, {Popup, GeolocateControl, Marker ,NavigationControl, FullscreenControl } from "react-map-gl";
 import { React, useState, useContext } from 'react';
 import geoJson from "./chicago-parks.json";
 
@@ -50,8 +50,8 @@ function MapComponent() {
   const [isFound, setIsFound] = useState(false);
 
   return (
-    <div className='w-100 mx-auto'>
-     <Map
+    <>
+      <Map
         mapboxAccessToken="pk.eyJ1IjoicGF1bG9kaWF6IiwiYSI6ImNsOHo2aWdhZzAwNDEzbmwxdjhjcHQyZnoifQ.Gb-9D9534fspbPaPHqNSeA"
         style={{
           width: '400px',
@@ -66,26 +66,22 @@ function MapComponent() {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         interactiveLayerIds={'click'}
       >
-   
-      {renderMarkers(geoJson.features, setTitle, setDescription, setIsFound)}
-   
-      <NavigationControl position="bottom-right"/>
-      <FullscreenControl/>
-      <GeolocateControl/>
-     </Map>
-     <div>
-      <h1>Location</h1>
-      <p>
-        {title}
-      </p>      
-      <p>
-        {description}
-      </p>      
-      <p>
-        {isFound}
-      </p>      
-     </div>
-    </div>
+        {renderMarkers(geoJson.features, setTitle, setDescription, setIsFound)}
+
+        <NavigationControl position="bottom-right"/>
+        <FullscreenControl/>
+        <GeolocateControl/>
+      </Map>
+      <div>
+        <h1 className='text-center pt-3'>Select a treasure to see more</h1>
+        <h4 className='text-center'>
+          {title}
+        </h4>
+        <h4 className='text-center'>
+          {description}
+        </h4>
+      </div>
+    </>
   );
 }
 

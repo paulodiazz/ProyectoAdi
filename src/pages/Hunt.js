@@ -1,35 +1,33 @@
 import React from 'react';
 import MapComponent from "../components/MapComponent";
 import "../assets/styles/style.css";
+import Map, {Popup, GeolocateControl, Marker ,NavigationControl, FullscreenControl } from "react-map-gl";
+
 
 function Hunt() {
 
   return (
-    <div class="container no-padding">
-      <img src={require("../assets/images/UI/Fondo.png").default} alt="Background" />
-      <div className="centered">
-        <img src={require("../assets/images/UI/HintHere.png").default} className="imf-fluid" alt="Hint here" />
-        <p className='w-75 mx-auto my-0 text-white'>Select a treasure to see more</p>
-        <img src={require("../assets/images/UI/iconos.png").default} className="imf-fluid" alt="Icons" />
+    <div className='fondo'>
+      <div className='row w-30 mx-auto pt-2'>
+        <img src={require("../assets/images/UI/HintHere.png").default} className="img-fluid" alt="Hint here" />
+      </div>
+      <div className='row pt-2'>
+        <div className='col-12'>
+          <h3 className='text-center'>Your badges</h3>
+        </div>
+      </div>
+      <div className='row w-60 mx-auto'>
+        <img src={require("../assets/images/UI/iconos.png").default} className="img-fluid" alt="Iconos" />
+      </div>
+      <div className='row w-90 mx-auto'>
         <MapComponent />
+      </div>
+      <div className='row w-40 mx-auto pt-2'>
         <a href="/#/leaderboard">
-          <img src={require("../assets/images/UI/Leaderboard.png").default} alt="Leaderboards" />
+          <img src={require("../assets/images/UI/Leaderboard.png").default} className="img-fluid" alt="Leaderboards" />
         </a>
       </div>
     </div>
-    // <div>
-    //   <div className={styles.container}>
-    //       <div className={styles.hintContainer}>
-    //           <p>"Hint here" : "Select a treasure to see more..."</p>
-    //       </div>
-    //       <div className={styles.mapContainer}>
-    //           <p>Map component</p>
-    //       </div>
-    //       <a href="/#/leaderboard">
-    //           <button className={styles.button}>Leaderboard</button>
-    //       </a>
-    //   </div>
-    // </div>
   );
 }
 
