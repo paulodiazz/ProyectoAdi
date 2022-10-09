@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, HashRouter } from 'react-router-dom';
 import styles from './styles/header.module.css';
 import { useState } from "react";
@@ -9,7 +9,8 @@ import Leaderboard from "./pages/Leaderboard";
 import Hunt from "./pages/Hunt";
 
 import {handleConnectWallet} from './wallet/walletUtils';
-
+import { useAccount, useSignMessage } from 'wagmi';
+import { authenticate, generateChallenge, getPublications } from './utils';
 
 
 function App() {
@@ -18,6 +19,28 @@ function App() {
   const [provider, setProvider] = useState();
   const [providerexp, setProviderexp] = useState();
   const [walletConnection, setWalletConnection] = useState(undefined);
+  const connected = !!data?.address;
+  const { signMessageAsync } = useSignMessage();
+  const [signedIn, setSignedIn] = useState(false);
+
+  const signIn = async () => {
+    try {
+      // if (!connected) {
+      //   return alert('Please connect your wallet first');
+      // }
+      // var address = "0x3E2dAba02b8b09879ed9b517bF4603a3DD9C410F"
+      const challenge = await generateChallenge(account);
+      const signature = await signMessageAsync({ message: challenge });
+      const accessToken = await authenticate(account, signature);
+      console.log({ accessToken });
+      window.sessionStorage.setItem('accessToken', accessToken);
+      setSignedIn(true);
+    } catch (error) {
+      console.error(error);
+      alert('Error signing in');
+    }
+  };
+
   return (
     <div>
       <div className={styles.header}>
@@ -40,7 +63,11 @@ function App() {
                 })
                 }}>CONNECT WALLET</button>
               }
-
+      {!signedIn && (
+        <button onClick={signIn} margintop='2'>
+          Login with Lens
+        </button>
+      )}
       </div>
       <div>
         <div>
