@@ -8,7 +8,7 @@ function Hunt() {
 
   return (
     <div className='fondo'>
-      <div className='row w-30 mx-auto pt-2'>
+      <div className='row w-50 mx-auto pt-2'>
         <img src={require("../assets/images/UI/HintHere.png").default} className="img-fluid" alt="Hint here" />
       </div>
       <div className='row pt-2'>
@@ -16,7 +16,7 @@ function Hunt() {
           <h3 className='text-center'>Your badges</h3>
         </div>
       </div>
-      <div className='row w-60 mx-auto'>
+      <div className='row w-50 mx-auto'>
         <img src={require("../assets/images/UI/iconos.png").default} className="img-fluid" alt="Iconos" />
       </div>
       <div className='row w-90 mx-auto'>
