@@ -1,5 +1,4 @@
 import "./styles/globals.css";
-// import "./scss/custom.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 

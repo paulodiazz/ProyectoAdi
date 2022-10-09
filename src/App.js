@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, HashRouter } from 'react-router-dom';
 import styles from './styles/header.module.css';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
