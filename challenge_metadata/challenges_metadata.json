@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "lon": -74.092367,
+        "lat": 4.61334,
+        "name": "Hacking Room Ñ",
+        "description": "A comfy zone for working and learning web3",
+        "hint": "Internet went off for a while, but no need to unplug your devices"
+    },
+    {
+        "id": 2,
+        "lon": -74.092367,
+        "lat": 4.6296815,
+        "name": "Catering Area Agora",
+        "description": "Relaxation zone with beverages and snacks",
+        "hint": "You may want to put on some glasses with friends..."
+    },
+    { 
+        "id": 3,
+        "lon": -74.09291948517273,
+        "lat": 4.629681590273345,
+        "name": "Welcome",
+        "description": "Let’s go back to the first door you walked by today",
+        "hint": "Chat with the doorman"
+    },
+    { 
+        "id": 4,
+        "lon": -74.09291948517273,
+        "lat": 4.629681590273345,
+        "name": "40&24",
+        "description": "You’re not in Brooklyn, but you can see a bridge",
+        "hint": "Elevate to the bridge"
+    },
+    {
+        "id": 5,
+        "lon": -74.09307767926603,
+        "lat": 4.6288897211332705,
+        "name": "Under the table",
+        "description": "So many tables to check... so little time...",
+        "hint": "At this table, three minutes may feel like an eternity",
+        "image_url": "https://ipfs.io/ipfs/Qme7ss3ARVgxv6rXqVPiikMJ8u2NLgmgszg13pYrDKEoiu"
+    },
+    {
+        "id": 6,
+        "lon": -74.09257965109106,
+        "lat": 4.629226873900703,
+        "name": "Fresh Air",
+        "description": "This is outdoors, it's not Xmas, but i'm under a tree",
+        "hint": "You're outside, it's so sunny, what do you do?"
+    }
+]

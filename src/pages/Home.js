@@ -1,13 +1,8 @@
 import React from 'react';
-import "../assets/styles/style.css";
+import styles from '../styles/home.module.css'
 // import { useNetwork } from 'wagmi'
 
 function Home() {
-  // const { chain } = useNetwork()
-  // var newPostBlock = ""
-  // if (chain && chain.id) {
-  //   newPostBlock = <div><NewPost /></div>
-  // }
   return (
     <div class="container no-padding">
       <img src={require("../assets/images/UI/FondoHome.png").default} alt="Background" />
