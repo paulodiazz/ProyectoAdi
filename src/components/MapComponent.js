@@ -1,15 +1,13 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Map, {Popup, GeolocateControl, Marker ,NavigationControl, FullscreenControl } from "react-map-gl";
-import { React, useState, useContext } from 'react';
-import geoJson from "./chicago-parks.json";
+import Map, { GeolocateControl, Marker, NavigationControl, FullscreenControl } from "react-map-gl";
+import { React, useState } from 'react';
 
+const renderMarkers = (_markers, setTitle, setDescription, setHint) => {
 
-const renderMarkers = (_markers, setTitle, setDescription, setIsFound, setHint) => {
-
-  return(_markers.map(marker=>{
-    if(marker.isFound=="True"){
-      return(
-        <Marker
+  return (_markers.map(marker => {
+    if (marker.isFound == "True") {
+      return (
+        <Marker key ={marker.description}
           longitude={marker.lon}
           latitude={marker.lat}
           color={"#00FF00"}
@@ -18,28 +16,27 @@ const renderMarkers = (_markers, setTitle, setDescription, setIsFound, setHint) 
             setTitle(marker.name);
             setDescription(marker.description);
             setHint(marker.hint);
-            //setIsFound(marker.properties.isFound);
             console.log("Click");
           }
-        }
+          }
         >
-    
+
         </Marker>)
-      }
-      else{return(
-        <Marker
-        longitude={marker.lon}
-        latitude={marker.lat}
+    }
+    else {
+      return (
+        <Marker key={marker.description}
+          longitude={marker.lon}
+          latitude={marker.lat}
           color={"#FF0000"}
           clickTolerance={true}
           onClick={() => {
             setTitle(marker.name);
             setDescription(marker.description);
             setHint(marker.hint);
-            //setIsFound(marker.properties.isFound);
             console.log("Click");
           }}
-          >
+        >
         </Marker>
       )
     }
@@ -49,13 +46,24 @@ const renderMarkers = (_markers, setTitle, setDescription, setIsFound, setHint) 
 
 function MapComponent() {
   const [lng, setLng] = useState(-74.093248);
-  const [lat, setLat] =useState(4.629650);
+  const [lat, setLat] = useState(4.629650);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [hint, setHint] = useState("");
-  const [isFound, setIsFound] = useState(false);
-  
+  const [pins, setPins] = useState("");
+
+  // var pins;
+  if (pins == "") {
+    fetch('https://bafybeiewjae2badckkt2qhbnetzt5m3ks54pjw7uslo52i7vfe4pcjwqey.ipfs.dweb.link/')
+    .then(response => response.json())
+    .then((jsonData) => {
+      setPins(jsonData);
+    })
+    .catch((error) => {
+      console.error(error)
+    });
+  }
 
   return (
     <>
@@ -66,7 +74,7 @@ function MapComponent() {
           height: '50vh',
           borderRadius: "15px"
         }}
-        initialViewState= {{
+        initialViewState={{
           longitude: lng,
           latitude: lat,
           zoom: 10
@@ -74,17 +82,17 @@ function MapComponent() {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         interactiveLayerIds={'click'}
       >
-        {renderMarkers(geoJson.features, setTitle, setDescription, setIsFound,setHint)}
+        {pins == "" ? <></> : renderMarkers(pins.features, setTitle, setDescription, setHint)}
 
-        <NavigationControl position="bottom-right"/>
-        <FullscreenControl/>
-        <GeolocateControl/>
+        <NavigationControl position="bottom-right" />
+        <FullscreenControl />
+        <GeolocateControl />
       </Map>
       <div>
-      <div className='row w-30 mx-auto pt-2'>
-        
-      </div>
-      
+        <div className='row w-30 mx-auto pt-2'>
+
+        </div>
+
         <h4 className='text-center'>
           {title}
         </h4>
@@ -92,7 +100,7 @@ function MapComponent() {
           {description}
         </h4>
         <h4 className='text-center'>
-        {hint}  
+          {hint}
         </h4>
       </div>
     </>
