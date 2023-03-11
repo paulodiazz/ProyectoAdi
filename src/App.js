@@ -65,7 +65,7 @@ function App() {
                 setWalletConnection
             })}}>
               <p className="px-2">
-                CONNECT WALLET
+                Portfolio
               </p>
             </button>
           }
@@ -75,7 +75,7 @@ function App() {
             <button className="btn-browngold"
             style={{maxWidth: "160px"}} onClick={signIn}>
               <p className="px-2 text-uppercase">
-                Login with Lens
+                Store
               </p>
             </button>
           )}
@@ -85,7 +85,7 @@ function App() {
         <div>
           <HashRouter basename="/">
             <Routes>
-              <Route path="/" element={<Home />}/>
+              <Route path="/" element={<Hunt />}/>
             </Routes>
             <Routes>
               <Route path="/hunt" element={<Hunt />}/>

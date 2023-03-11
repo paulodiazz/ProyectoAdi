@@ -67,12 +67,13 @@ function MapComponent() {
 
   return (
     <>
+    <div className='row mx-auto pt-2'>
       <Map
         mapboxAccessToken="pk.eyJ1IjoicGF1bG9kaWF6IiwiYSI6ImNsOHo2aWdhZzAwNDEzbmwxdjhjcHQyZnoifQ.Gb-9D9534fspbPaPHqNSeA"
         style={{
-          width: '400px',
-          height: '50vh',
-          borderRadius: "15px"
+          width: '700px',
+          height: '90vh',
+          // borderRadius: "15px"
         }}
         initialViewState={{
           longitude: lng,
@@ -89,7 +90,7 @@ function MapComponent() {
         <GeolocateControl />
       </Map>
       <div>
-        <div className='row w-30 mx-auto pt-2'>
+        <div className='w-30 mx-auto pt-2'>
 
         </div>
 
@@ -102,6 +103,7 @@ function MapComponent() {
         <h4 className='text-center'>
           {hint}
         </h4>
+      </div>
       </div>
     </>
   );
